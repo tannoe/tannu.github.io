@@ -30,6 +30,75 @@
       overflow-x: hidden;
     }
 
+
+
+    /* Cursor */
+
+.clickable-image{
+    cursor:pointer;
+    transition:.3s;
+}
+
+.clickable-image:hover{
+    transform:scale(1.02);
+}
+
+/* Modal */
+
+.image-modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+
+    background:rgba(0,0,0,.9);
+
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    padding:40px;
+}
+
+.modal-image{
+    max-width:90%;
+    max-height:85vh;
+    border-radius:10px;
+    animation:zoom .25s ease;
+}
+
+.modal-caption{
+    color:#fff;
+    margin-top:20px;
+    font-size:18px;
+    text-align:center;
+}
+
+.close-modal{
+    position:absolute;
+    top:20px;
+    right:35px;
+
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+}
+
+@keyframes zoom{
+
+    from{
+        transform:scale(.8);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+
+}
+    
+    
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -539,7 +608,7 @@
       <img
     src="assets/Dashboard 1 (2).png"
     alt="Pharmaceutical Sales Dashboard"
-    class="project-image"
+    class="project-image clickable-image"
   >
       <div class="project-header">
         <span class="project-num">PROJECT_01</span>
@@ -632,6 +701,14 @@
   </div>
 </section>
 
+<div id="imageModal" class="image-modal">
+    <span class="close-modal">&times;</span>
+
+    <img id="modalImage" class="modal-image">
+
+    <div id="modalCaption" class="modal-caption"></div>
+</div>
+  
 <!-- FOOTER -->
 <footer>
   <span>// Tannu Wibowo · Data Analyst</span>
@@ -688,5 +765,7 @@
   }, { threshold: .12 });
   document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 </script>
+
+  
 </body>
 </html>
